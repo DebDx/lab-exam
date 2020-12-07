@@ -1,0 +1,67 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<table dir="ltr" width="500" border="1" 
+			summary="purpose/structure for speech output">
+	<caption>{{title}}
+	</caption>
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Author</th>
+			<th scope="col">Date</th>
+			<th scope="col">Title</th>
+      <th scope="col">News Body</th>
+      <th scope="col">Status</th>
+		</tr>
+	</thead>
+	<tbody>
+  
+		<tr>
+    {% for rec in records %}
+  <td>{{ rec.regno }}</td>
+  <td>{{ rec.date }}</td>
+  
+  <td>{{ rec.title }}</td>
+  <td>{{ rec.data }}</td>
+  <td>{{ rec.status }}</td>
+  {% endfor %}
+		
+		</tr>
+		
+	</tbody>
+</table>
+
+
+
+
+
+
+
+<div class="container">
+  <form action="/news" method="post">
+    <h3>{{title}}</h3>
+    <label for="fname">Author</label>
+    <input type="text" id="fname" name="regno" placeholder="Author">
+    <br>
+    
+
+    <label for="subject">Date</label>
+    <input type="text" id="dname" name="date" placeholder="Date">
+    <br>
+    <label for="subject">Title</label>
+    <input type="text" id="tname" name="title" placeholder="Title">
+    <br>
+     <label for="subject">News Body</label>
+    <textarea id="subject" name="subject" placeholder="Write your news" style="height:200px"></textarea>
+    <br>
+    <label for="subject">Publication Status</label>
+    <input type="text" id="pname" name="status" placeholder="publication status">
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+{% endblock %}
